@@ -13,7 +13,7 @@ export default function BuatTagihan({permohonan}) {
 	return (
 		<>
 		<Button
-			className="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-emerald-600 dark:hover:bg-emerald-700 focus:outline-none dark:focus:ring-emerald-800 cursor-pointer"
+			variant="secondary"
 			onClick={() => setOpen(true)}
 		>
 			Buat Tagihan
@@ -92,19 +92,17 @@ export default function BuatTagihan({permohonan}) {
 							className="mt-2"
 							message={errors?.global}
 						/>
-						<button
-							type="button"
+						<Button
+							variant="back"
 							onClick={() => setOpen(false)}
-							className="bg-gray-100 text-dark hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-400 cursor-pointer"
 						>
 							Tutup
-						</button>
-						<button
-							className="cursor-pointer px-4 py-2 bg-cyan-600 text-white rounded text-sm"
+						</Button>
+						<Button
 							disabled={processing}
 						>
 							Submit
-						</button>
+						</Button>
 					</div>
 					</>
 					)}}

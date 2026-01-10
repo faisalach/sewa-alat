@@ -99,7 +99,10 @@ export default function Dashboard() {
 						<div className="flex flex-wrap gap-3">
 							<Button 
 								onClick={() => router.visit(buat_permohonan().url)}
-								className="bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white"><Plus/> Ajukan Permohonan Baru</Button>
+								>
+								<Plus/>
+								Ajukan Permohonan Baru
+							</Button>
 						</div>
 					</>
 				)}
@@ -111,7 +114,10 @@ export default function Dashboard() {
 						</p>
 						<Button 
 							onClick={() => router.visit(buat_permohonan().url)}
-							className="bg-cyan-600 cursor-pointer hover:bg-cyan-700 text-white"><Plus/> Buat Permohonan</Button>
+							>
+							<Plus/> 
+							Buat Permohonan
+						</Button>
 					</div>
 				)}
 

@@ -12,6 +12,7 @@ import UploadModalPage from '@/components/upload-file';
 import AppLayout from '@/layouts/app-layout';
 import { show, add } from '@/routes/permohonan';
 import Select from 'react-select';
+import { ButtonLink } from '@/components/ui/button-link';
 
 const breadcrumbs: BreadcrumbItem[] = [
 	{
@@ -210,14 +211,13 @@ export default function Permohonan() {
 						</div>
 
 						<div className="flex items-center">
-							<Link
+							<ButtonLink
 								href={show().url}
-								className="inline-flex items-center justify-center h-9 w-[90px] bg-gray-100 text-dark hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-400 cursor-pointer"
+								variant="back"
 							>
 								Kembali
-							</Link>
+							</ButtonLink>
 							<Button
-								className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800 cursor-pointer"
 								disabled={processing}
 							>
 								Simpan

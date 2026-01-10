@@ -9,6 +9,7 @@ import BuatTagihan from '@/components/buat-tagihan';
 import AppLayout from '@/layouts/app-layout';
 import { show, edit, update_verifikasi, update_selesai } from '@/routes/permohonan';
 import Swal from 'sweetalert2';
+import { ButtonLink } from '@/components/ui/button-link';
 
 const formatRupiah = (val) => {
 	const formatter = Intl.NumberFormat("id-ID");
@@ -260,23 +261,23 @@ export default function Permohonan() {
 
 
 				<div className="flex items-center ">
-					<Link
+					<ButtonLink
 						onClick={() => window.history.back()}
-						className="inline-flex items-center justify-center h-9 w-[90px] bg-gray-100 text-dark hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-400 cursor-pointer"
+						variant="back"
 					>
 						Kembali
-					</Link>
+					</ButtonLink>
 
-					{((auth.user.role === 3 || (auth.user.role == 2 && auth.user.timja == 1)) && permohonan.status == 2) && (
+					{((auth.user.role === 3 || (auth.user.role == 2 && auth.user.timja == 1)) && permohonan.status == 1) && (
 						<>
 							<Button
-								className="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:ring-emerald-300 rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-emerald-600 dark:hover:bg-emerald-700 focus:outline-none dark:focus:ring-emerald-800 cursor-pointer"
+								variant="secondary"
 								onClick={() => handleVerifikasi(update_verifikasi(permohonan?.id).url,1)}
 							>
 								Setujui
 							</Button>
 							<Button
-								className="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-900 focus:outline-none dark:focus:ring-red-800 cursor-pointer"
+								variant="destructive"
 								onClick={() => handleVerifikasi(update_verifikasi(permohonan?.id).url,0)}
 							>
 								Tolak

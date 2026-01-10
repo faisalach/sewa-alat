@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { X } from 'lucide-react';
 
 export default function Modal({
 	open,
@@ -21,15 +22,15 @@ export default function Modal({
 			/>
 
 			<div className="w-full overflow-auto py-10">
-				<div className="relative max-w-[90%] w-lg mx-auto bg-gray-900 rounded-lg shadow-lg">
-					<div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+				<div className="relative max-w-[90%] w-lg mx-auto bg-gray-100 dark:bg-gray-900 rounded-lg shadow-lg">
+					<div className="flex items-center bg-cyan-600 justify-between px-4 py-3 border-b border-gray-700">
 						<h3 className="text-sm font-medium text-gray-200">{title}</h3>
 						<button
 							type="button"
 							onClick={onClose}
-							className="cursor-pointer text-gray-400 hover:text-red-400"
+							className="font-bold cursor-pointer text-gray-400 hover:text-gray-400/50"
 						>
-							&times;
+							<X strokeWidth={3} />
 						</button>
 					</div>
 

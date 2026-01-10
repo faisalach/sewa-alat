@@ -10,6 +10,7 @@ import Datatables from '@/components/datatables';
 import Select, { components } from 'react-select';
 import { Label } from '@/components/ui/label';
 import { MultipleSelect } from '@/components/ui/multiple-select';
+import { ButtonLink } from '@/components/ui/button-link';
 
 const breadcrumbs: BreadcrumbItem[] = [
 	{
@@ -55,10 +56,10 @@ export default function Permohonan() {
 			<div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto over rounded-xl p-4">
 				{auth.user.role === 1 && (
 					<div>
-						<Link href={add().url} className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800 inline-flex items-center cursor-pointer">
+						<ButtonLink href={add().url}>
 							<Plus className="h-4 w-4 mr-3" />
 							<span>Buat Permohonan</span>
-						</Link>
+						</ButtonLink>
 					</div>
 				)}
 				<div className="relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
