@@ -1,6 +1,6 @@
 export function Timeline({ history }: { history: any[] }) {
 	return (
-		<div className="rounded-2xl border p-6">
+		<div className="bg-white dark:bg-slate-950 relative overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-6">
 			<h3 className="font-semibold mb-4">Riwayat Permohonan</h3>
 
 			<div className="space-y-4">

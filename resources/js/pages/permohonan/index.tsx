@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage, Link, router } from '@inertiajs/react';
-import { Plus } from "lucide-react";
+import { Plus, TriangleAlert } from "lucide-react";
 import { show, getData, add, edit, destroy, detail, prioritas } from '@/routes/permohonan';
 import { ActionMenu, handleDelete } from '@/components/ui/action-menu';
 import Datatables from '@/components/datatables';
@@ -11,6 +11,7 @@ import Select, { components } from 'react-select';
 import { Label } from '@/components/ui/label';
 import { MultipleSelect } from '@/components/ui/multiple-select';
 import { ButtonLink } from '@/components/ui/button-link';
+
 
 const breadcrumbs: BreadcrumbItem[] = [
 	{
@@ -86,14 +87,14 @@ export default function Permohonan() {
 							</div>
 							{auth.user.role == 2 && (
 								<div className="md:order-2 order-1 md:text-right">
-									<a
-										onClick={() => {
-											router.visit(prioritas().url)
-										}}
-										className="inline-flex items-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-red-600/50 cursor-pointer"
+									<ButtonLink
+										href={prioritas().url}
+										variant="destructive"
+										className="mr-0"
 									>
+										<TriangleAlert size={16} className="mr-1" />
 										Prioritas
-									</a>
+									</ButtonLink>
 								</div>
 							)}
 						</div>

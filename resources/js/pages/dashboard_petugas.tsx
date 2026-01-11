@@ -5,6 +5,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, usePage, router } from '@inertiajs/react';
 
 import DashboardCard from '@/components/ui/dashboard-card';
+import { ButtonLink } from '@/components/ui/button-link';
 import { ChartNilai } from '@/components/ui/chart-nilai';
 import { ChartProgress } from '@/components/ui/chart-progress';
 import { prioritas as permohonan_prioritas } from '@/routes/permohonan';
@@ -13,6 +14,8 @@ import {
     FileSearch,
     CheckCircle,
     Receipt,
+    CircleAlert,
+    TriangleAlert
 } from "lucide-react";
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -71,19 +74,21 @@ export default function Dashboard() {
 				<div className="rounded-xl border border-sidebar-border/70 p-6 dark:border-sidebar-border bg-background">
 					<div className="flex items-center justify-between">
 						<div>
-							<h3 className="text-lg font-semibold">Tugas Prioritas Hari Ini</h3>
+							<h3 className="text-lg font-semibold flex items-center">
+								<CircleAlert size={16} className="mr-2" />
+								Tugas Prioritas Hari Ini
+							</h3>
 							<p className="text-sm text-muted-foreground">
 								{priority.length ?? 0} permohonan perlu segera diproses
 							</p>
 						</div>
-						<a
-							onClick={() => {
-								router.visit(permohonan_prioritas().url)
-							}}
-							className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+						<ButtonLink
+							href={permohonan_prioritas().url}
+							variant="destructive"
 						>
+							<TriangleAlert size={16} className="mr-2" />
 							Proses Sekarang
-						</a>
+						</ButtonLink>
 					</div>
 				</div>
 			</div>
