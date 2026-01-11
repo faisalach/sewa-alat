@@ -45,7 +45,7 @@ export default function Sarana() {
 						<span>Tambah Data</span>
 					</ButtonLink>
 				</div>
-				<div className="relative overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+				<div className="bg-white dark:bg-slate-950 relative overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
 					<Datatables 
 						id="datatable"
 						ajaxUrl={getData().url}

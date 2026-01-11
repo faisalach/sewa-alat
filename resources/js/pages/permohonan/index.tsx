@@ -62,7 +62,7 @@ export default function Permohonan() {
 						</ButtonLink>
 					</div>
 				)}
-				<div className="relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+				<div className="bg-white dark:bg-slate-950 relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
 					{status_permohonan && (
 						<div className="grid gap-4 md:grid-cols-2">
 							<div className="md:order-1 order-2 flex items-center gap-4">

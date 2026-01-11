@@ -49,48 +49,48 @@ export default function Users() {
 						</ButtonLink>
 					</div>
 				)}
-			<div className="relative overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
-				
-				<Datatables 
-					id="datatable"
-					ajaxUrl={getData().url}
-					onInit={(table) => {
-						window.usersTable = table;
-					}}
-					columns={[
-						{ data: 'name' },
-						{ data: 'phone' },
-						{ data: 'email' },
-						{ data: 'timja' },
-						{ data: 'id', orderable:false, createdCell: (td, _cellData, rowData) => {
-							return ReactDOM.createRoot(td).render(
-								<ActionMenu 
-									menus={menuLists(rowData)}
+				<div className="bg-white dark:bg-slate-950 relative overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+					
+					<Datatables 
+						id="datatable"
+						ajaxUrl={getData().url}
+						onInit={(table) => {
+							window.usersTable = table;
+						}}
+						columns={[
+							{ data: 'name' },
+							{ data: 'phone' },
+							{ data: 'email' },
+							{ data: 'timja' },
+							{ data: 'id', orderable:false, createdCell: (td, _cellData, rowData) => {
+								return ReactDOM.createRoot(td).render(
+									<ActionMenu 
+										menus={menuLists(rowData)}
+									/>
+								)
+							} },
+						]}
+						actionMenu={(container,data) =>{
+							return ReactDOM.createRoot(container).render(
+								<ActionMenu
+									label="action"
+									menus={menuLists(data)}
 								/>
-							)
-						} },
-					]}
-					actionMenu={(container,data) =>{
-						return ReactDOM.createRoot(container).render(
-							<ActionMenu
-								label="action"
-								menus={menuLists(data)}
-							/>
-						);
-					}}
-					>
-					<thead>
-						<tr className="bg-cyan-600 text-white">
-							<th>Nama</th>
-							<th>No Telp / Wa</th>
-							<th>Email</th>
-							<th>Tim Kerja</th>
-							<th>#</th>
-						</tr>
-					</thead>
-				</Datatables>
+							);
+						}}
+						>
+						<thead>
+							<tr className="bg-cyan-600 text-white">
+								<th>Nama</th>
+								<th>No Telp / Wa</th>
+								<th>Email</th>
+								<th>Tim Kerja</th>
+								<th>#</th>
+							</tr>
+						</thead>
+					</Datatables>
+				</div>
 			</div>
-		</div>
-	</AppLayout>
+		</AppLayout>
 	);
 }

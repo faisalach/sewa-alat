@@ -13,7 +13,7 @@ export function ChartPnbp({data}) {
 	const COLORS = ["#ef4444", "#f59e0b", "#22c55e"];
 
 	return (
-		<Card className="rounded-2xl shadow-sm">
+		<Card className="bg-white dark:bg-gray-950 rounded-2xl shadow-sm">
 			<CardContent className="">
 				<h3 className="font-semibold mb-4">
 					PNBP per Bulan

@@ -59,7 +59,7 @@ export default function Tagihan() {
 		<AppLayout breadcrumbs={breadcrumbs}>
 			<Head title="Tagihan" />
 			<div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-				<div className="relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+				<div className="bg-white dark:bg-slate-950 relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
 					<div className="flex items-center gap-4">
 						<Label htmlFor="status_bayar">Filter Status</Label>
 						<MultipleSelect

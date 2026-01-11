@@ -22,7 +22,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
 
     return (
         <SidebarGroup className="px-2 py-0">
-            <SidebarGroupLabel>Menu</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-white">Menu</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
                     <DropdownItem key={item.title} item={item} isActive={isActive} />
@@ -52,6 +52,7 @@ function DropdownItem({
                 onClick={() => hasChildren && setOpen((o) => !o)}
                 isActive={item.href ? isActive(item.href) : false}
                 tooltip={{ children: item.title }}
+                className={(isActive(item.href) ? "!bg-white !text-black" : "") + " hover:bg-white hover:text-black active:bg-white active:text-black"}
             >
                 {hasChildren ? (
                     <div className="flex w-full items-center justify-between">
@@ -81,6 +82,7 @@ function DropdownItem({
                         <SidebarMenuButton
                             key={child.title}
                             asChild
+                            className={(isActive(child.href) ? "!bg-white !text-black" : "") + " hover:bg-white hover:text-black active:bg-white active:text-black"}
                             isActive={isActive(child.href)}
                         >
                             <Link href={child.href}>

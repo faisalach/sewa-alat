@@ -73,189 +73,193 @@ export default function Permohonan() {
 					</div>
 				</div>
 
-				<div className="grid gap-2 dark:shadow-gray-900 shadow-md rounded-lg">
-					<table className="w-full border border-gray-200 rounded-lg overflow-hidden">
-						<thead className="bg-cyan-600 text-white">
-							<tr>
-								<th colSpan="2" className="px-4 py-2 text-left font-semibold">Data Pemohon</th>
-							</tr>
-						</thead>
-						<tbody className="">
-							<tr className="bg-gray-100 dark:bg-gray-900">
-								<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
-									Nomor Permohonan
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									: {permohonan?.nomor_permohonan}
-								</td>
-							</tr>
-							<tr className="bg-gray-50 dark:bg-gray-950">
-								<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
-									Nama Pemohon
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									: {permohonan?.pemohon?.user?.name}
-								</td>
-							</tr>
-							<tr className="bg-gray-100 dark:bg-gray-900">
-								<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-									Instansi
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									: {permohonan?.pemohon?.instansi}
-								</td>
-							</tr>
-							<tr className="bg-gray-50 dark:bg-gray-950">
-								<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-									Alamat Instansi
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									: {permohonan?.pemohon?.alamat}
-								</td>
-							</tr>
-							<tr className="bg-gray-100 dark:bg-gray-900">
-								<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-									Durasi Sewa
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									: {
-										permohonan?.tanggal_awal_penggunaan === permohonan?.tanggal_akhir_penggunaan
-										? permohonan?.tanggal_awal_penggunaan
-										: `${permohonan?.tanggal_awal_penggunaan} - ${permohonan?.tanggal_akhir_penggunaan}`
-									}
-								</td>
-							</tr>
-							<tr className="bg-gray-50 dark:bg-gray-950">
-								<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-									Surat Permohonan
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-									<div className="flex items-center gap-2">
-										: <ButtonViewDoc
-											id={suratPermohonan?.id}
-											file={suratPermohonan?.file_preview_url}
-											/>
-									</div>
-								</td>
-							</tr>
-							<tr className="bg-gray-100 dark:bg-gray-900">
-								<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-									Surat Pernyataan
-								</td>
-								<td className="px-4 py-2 text-gray-900 dark:text-gray-100 ">
-									<div className="flex items-center gap-2">
-										: <ButtonViewDoc
-											id={suratPernyataan?.id}
-											file={suratPernyataan?.file_preview_url}
-											/>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div className="grid gap-2 overflow-x-auto dark:shadow-gray-900 shadow-md rounded-lg">
-					<table className="w-full border border-gray-300 rounded-lg overflow-hidden">
-						<thead  >
-							<tr className="bg-cyan-600 text-white">
-								<th colSpan="5" className="px-4 py-2 text-left font-semibold">Sarana</th>
-							</tr>
-							<tr className="border-b border-gray-400 dark:border-gray-600 ">
-								<th className="px-4 py-2 text-left font-semibold">Nama Sarana</th>
-								<th className="px-4 py-2 text-left font-semibold">Tarif</th>
-								<th className="px-4 py-2 text-center font-semibold">Jumlah</th>
-								<th className="px-4 py-2 text-center font-semibold">Durasi Pemakaian</th>
-								<th className="px-4 py-2 text-center font-semibold">Sub Total</th>
-							</tr>
-						</thead>
-
-						<tbody className="">
-							{permohonan?.permohonan_sarana.map((rowSarana, i) => (
-								<tr key={i} className={i % 2 == 0 ? `bg-gray-100 dark:bg-gray-900` : 'bg-gray-50 dark:bg-gray-950'}>
-									<td className="px-4 py-2">
-										{rowSarana?.sarana.nama_sarana}
-									</td>
-									<td className="px-4 py-2">
-										{formatRupiah( rowSarana?.tarif_satuan )} /{rowSarana?.sarana?.satuan_tarif_format}
-									</td>
-									<td className="px-4 py-2 text-center">
-										{rowSarana?.jumlah_sarana}
-									</td>
-									<td className="px-4 py-2 text-center">
-										{rowSarana?.durasi}
-									</td>
-									<td className="px-4 py-2 text-right font-medium">
-										{formatRupiah( rowSarana?.subtotal )}
-									</td>
-								</tr>
-								))}
-						</tbody>
-						<tfoot
-							className="divide-y divide-gray-200"
-						>
-							<tr className="border-t border-gray-400 dark:border-gray-600">
-								<td colSpan="3"></td>
-								<td>Grand Total</td>
-								<td className="px-4 py-2 text-right font-medium">
-									{formatRupiah(permohonan?.total_tarif)}
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-
-				{permohonan?.tagihan && (
+				<div className="bg-white dark:bg-slate-950 relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
 					<div className="grid gap-2 dark:shadow-gray-900 shadow-md rounded-lg">
 						<table className="w-full border border-gray-200 rounded-lg overflow-hidden">
 							<thead className="bg-cyan-600 text-white">
 								<tr>
-									<th colSpan="2" className="px-4 py-2 text-left font-semibold">Data Tagihan PNBP</th>
+									<th colSpan="2" className="px-4 py-2 text-left font-semibold">Data Pemohon</th>
 								</tr>
 							</thead>
 							<tbody className="">
 								<tr className="bg-gray-100 dark:bg-gray-900">
 									<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
-										Kode Billing
+										Nomor Permohonan
 									</td>
 									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-										: {permohonan?.tagihan?.nomor_billing}
+										: {permohonan?.nomor_permohonan}
 									</td>
 								</tr>
 								<tr className="bg-gray-50 dark:bg-gray-950">
 									<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
-										Nominal
+										Nama Pemohon
 									</td>
 									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-										: {permohonan?.tagihan?.nominal_format}
+										: {permohonan?.pemohon?.user?.name}
 									</td>
 								</tr>
 								<tr className="bg-gray-100 dark:bg-gray-900">
 									<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-										Status Bayar
+										Instansi
 									</td>
 									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-										: {permohonan?.tagihan?.status_bayar_text}
+										: {permohonan?.pemohon?.instansi}
 									</td>
 								</tr>
 								<tr className="bg-gray-50 dark:bg-gray-950">
 									<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-										Tanggal Terbit
+										Alamat Instansi
 									</td>
 									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-										: {permohonan?.tagihan?.tanggal_terbit}
+										: {permohonan?.pemohon?.alamat}
 									</td>
 								</tr>
 								<tr className="bg-gray-100 dark:bg-gray-900">
 									<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
-										Tanggal Kadaluarsa
+										Durasi Sewa
 									</td>
 									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
-										: {permohonan?.tagihan?.tanggal_kadaluarsa}
+										: {
+											permohonan?.tanggal_awal_penggunaan === permohonan?.tanggal_akhir_penggunaan
+											? permohonan?.tanggal_awal_penggunaan
+											: `${permohonan?.tanggal_awal_penggunaan} - ${permohonan?.tanggal_akhir_penggunaan}`
+										}
+									</td>
+								</tr>
+								<tr className="bg-gray-50 dark:bg-gray-950">
+									<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
+										Surat Permohonan
+									</td>
+									<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+										<div className="flex items-center gap-2">
+											: <ButtonViewDoc
+												id={suratPermohonan?.id}
+												file={suratPermohonan?.file_preview_url}
+												/>
+										</div>
+									</td>
+								</tr>
+								<tr className="bg-gray-100 dark:bg-gray-900">
+									<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
+										Surat Pernyataan
+									</td>
+									<td className="px-4 py-2 text-gray-900 dark:text-gray-100 ">
+										<div className="flex items-center gap-2">
+											: <ButtonViewDoc
+												id={suratPernyataan?.id}
+												file={suratPernyataan?.file_preview_url}
+												/>
+										</div>
 									</td>
 								</tr>
 							</tbody>
 						</table>
+					</div>
+				</div>
+
+				<div className="bg-white dark:bg-slate-950 relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+					<h3 className="mb-4 text-lg">Alat dan Sarana yang digunakan</h3>
+					<div className="grid gap-2 overflow-x-auto dark:shadow-gray-900 shadow-md rounded-lg">
+						<table className="w-full border border-gray-300 rounded-lg overflow-hidden">
+							<thead  >
+								<tr className="bg-cyan-600 text-white">
+									<th className="px-4 py-2 text-left font-semibold">Nama Sarana</th>
+									<th className="px-4 py-2 text-left font-semibold">Tarif</th>
+									<th className="px-4 py-2 text-center font-semibold">Jumlah</th>
+									<th className="px-4 py-2 text-center font-semibold">Durasi Pemakaian</th>
+									<th className="px-4 py-2 text-center font-semibold">Sub Total</th>
+								</tr>
+							</thead>
+
+							<tbody className="">
+								{permohonan?.permohonan_sarana.map((rowSarana, i) => (
+									<tr key={i} className={i % 2 == 0 ? `bg-gray-100 dark:bg-gray-900` : 'bg-gray-50 dark:bg-gray-950'}>
+										<td className="px-4 py-2">
+											{rowSarana?.sarana.nama_sarana}
+										</td>
+										<td className="px-4 py-2">
+											{formatRupiah( rowSarana?.tarif_satuan )} /{rowSarana?.sarana?.satuan_tarif_format}
+										</td>
+										<td className="px-4 py-2 text-center">
+											{rowSarana?.jumlah_sarana}
+										</td>
+										<td className="px-4 py-2 text-center">
+											{rowSarana?.durasi}
+										</td>
+										<td className="px-4 py-2 text-right font-medium">
+											{formatRupiah( rowSarana?.subtotal )}
+										</td>
+									</tr>
+									))}
+							</tbody>
+							<tfoot
+								className="divide-y divide-gray-200"
+							>
+								<tr className="border-t border-gray-400 dark:border-gray-600">
+									<td colSpan="3"></td>
+									<td>Grand Total</td>
+									<td className="px-4 py-2 text-right font-medium">
+										{formatRupiah(permohonan?.total_tarif)}
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+
+				{permohonan?.tagihan && (
+					<div className="bg-white dark:bg-slate-950 relative rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border p-4">
+						<div className="grid gap-2 dark:shadow-gray-900 shadow-md rounded-lg">
+							<table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+								<thead className="bg-cyan-600 text-white">
+									<tr>
+										<th colSpan="2" className="px-4 py-2 text-left font-semibold">Data Tagihan PNBP</th>
+									</tr>
+								</thead>
+								<tbody className="">
+									<tr className="bg-gray-100 dark:bg-gray-900">
+										<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
+											Kode Billing
+										</td>
+										<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+											: {permohonan?.tagihan?.nomor_billing}
+										</td>
+									</tr>
+									<tr className="bg-gray-50 dark:bg-gray-950">
+										<td className="w-[200px] px-4 py-2 font-medium text-gray-600 dark:text-gray-300 w-1/3">
+											Nominal
+										</td>
+										<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+											: {permohonan?.tagihan?.nominal_format}
+										</td>
+									</tr>
+									<tr className="bg-gray-100 dark:bg-gray-900">
+										<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
+											Status Bayar
+										</td>
+										<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+											: {permohonan?.tagihan?.status_bayar_text}
+										</td>
+									</tr>
+									<tr className="bg-gray-50 dark:bg-gray-950">
+										<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
+											Tanggal Terbit
+										</td>
+										<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+											: {permohonan?.tagihan?.tanggal_terbit}
+										</td>
+									</tr>
+									<tr className="bg-gray-100 dark:bg-gray-900">
+										<td className="px-4 py-2 font-medium text-gray-600 dark:text-gray-300">
+											Tanggal Kadaluarsa
+										</td>
+										<td className="px-4 py-2 text-gray-900 dark:text-gray-100">
+											: {permohonan?.tagihan?.tanggal_kadaluarsa}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				)}
 

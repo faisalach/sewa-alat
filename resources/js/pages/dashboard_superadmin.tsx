@@ -40,7 +40,6 @@ export default function Dashboard() {
 			<div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 					<DashboardCard
-						variant="soft"
 						color="blue"
 						value={stats.total_permohonan}
 						subtitle="Total Permohonan"
@@ -48,7 +47,6 @@ export default function Dashboard() {
 					/>
 
 					<DashboardCard
-						variant="soft"
 						color="amber"
 						value={stats.permohonan_aktif}
 						subtitle="Permohonan Aktif"
@@ -56,7 +54,6 @@ export default function Dashboard() {
 					/>
 
 					<DashboardCard
-						variant="soft"
 						color="green"
 						value={stats.permohonan_selesai}
 						subtitle="Permohonan Selesai"
@@ -64,7 +61,6 @@ export default function Dashboard() {
 					/>
 
 					<DashboardCard
-						variant="soft"
 						color="purple"
 						value={stats.total_pnbp}
 						subtitle="Total PNBP"
@@ -73,11 +69,9 @@ export default function Dashboard() {
 				</div>
 
 				<div className="grid grid-cols-1 gap-6">
-						<ChartPermohonan data={graph_permohonan}/>
-						<ChartPnbp data={graph_pnbp}/>
+					<ChartPermohonan data={graph_permohonan}/>
+					<ChartPnbp data={graph_pnbp}/>
 				</div>
-
-
 			</div>
 		</AppLayout>
 		);

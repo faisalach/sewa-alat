@@ -136,11 +136,11 @@ export function AppSidebar() {
 	}
 
 	return (
-		<Sidebar collapsible="icon" variant="inset">
+		<Sidebar collapsible="icon" variant="floating">
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>
-						<SidebarMenuButton size="lg" asChild>
+						<SidebarMenuButton  className="hover:bg-transparent hover:text-white active:bg-transparent active:text-white" size="lg" asChild>
 							<Link href={dashboard()} prefetch>
 							<AppLogo app_name={app_name} />
 						</Link>

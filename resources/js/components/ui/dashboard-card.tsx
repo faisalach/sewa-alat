@@ -8,32 +8,32 @@ const colorStyles: Record<ColorVariant, {
 	icon: string;
 }> = {
 	red: {
-		bg: "bg-red-50",
+		bg: "bg-red-50 bg-red-950",
 		text: "text-red-700",
 		icon: "bg-red-500",
 	},
 	blue: {
-		bg: "bg-blue-50",
+		bg: "bg-blue-50 bg-blue-950",
 		text: "text-blue-700",
 		icon: "bg-blue-500",
 	},
 	green: {
-		bg: "bg-emerald-50",
+		bg: "bg-emerald-50 bg-emerald-950",
 		text: "text-emerald-700",
 		icon: "bg-emerald-500",
 	},
 	amber: {
-		bg: "bg-amber-50",
+		bg: "bg-amber-50 bg-amber-950",
 		text: "text-amber-700",
 		icon: "bg-amber-500",
 	},
 	slate: {
-		bg: "bg-slate-50",
+		bg: "bg-slate-50 bg-slate-950",
 		text: "text-slate-600",
 		icon: "bg-slate-400",
 	},
 	purple: {
-		bg: "bg-purple-50",
+		bg: "bg-purple-50 bg-purple-950",
 		text: "text-purple-700",
 		icon: "bg-purple-500",
 	},
@@ -57,7 +57,7 @@ export default function DashboardCard({
 	const styles = colorStyles[color];
 
 	return (
-		<Card className={`rounded-2xl border shadow-sm ${styles.bg} dark:bg-transparent ${className}`}>
+		<Card className={`rounded-2xl border shadow-sm ${styles.bg} ${className}`}>
 			<CardContent className="flex justify-between">
 				<div>
 					<p className="text-sm text-muted-foreground">
